@@ -1,0 +1,3 @@
+Using this write mode,
+you can write in the file.
+If there is some existing it will over write the content.

@@ -1,0 +1,8 @@
+open(directory,mode)
+
+directory: Path of file which can be absolute or relative.
+
+Mode of file:
+1.Read
+2.Write
+3.Append
