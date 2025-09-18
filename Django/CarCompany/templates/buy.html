@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Buy Cars {% endblock title %}
+{% block body %}
+
+<div class="container-fluid px-5 py-5 my-1">
+  <div class="bd-content">
+    <h2 class="text-center fw-bold">Buy Cars</h2>
+    <p class="text-center">Select from the latest models</p>
+
+    <div class="row">
+      {% for car in cars %}
+      <article class="col-sm-6 col-md-3 mb-3">
+        <img class="img-thumbnail mb-3" 
+             src="{{ car.image.url }}" 
+             alt="{{ car.name }}" 
+             width="480" height="300" loading="lazy"/>
+        <h3 class="h5 mb-1">{{ car.name }}</h3>
+        <p class="text-body-secondary">{{ car.description }}</p>
+        <p style="color: green; font-weight: bold; font-size: 1.1rem;">
+          {{ car.price }} INR
+        </p>
+
+        <button class="btn btn-outline-primary btn-sm"
+                onclick="location.href='{% url 'add_to_wishlist' car.id %}'">
+          Wishlist
+        </button>
+        <button class="btn btn-success btn-sm"
+                onclick="location.href='{% url 'add_to_cart' car.id %}'">
+          Add to Cart
+        </button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

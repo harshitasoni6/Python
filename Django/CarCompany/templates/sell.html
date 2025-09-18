@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} Sell Your Car {% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+     <div class="text-center mb-4">
+    <img src="static/img/sell.webp" 
+         alt="Sell Your Car" 
+         class="img-fluid rounded shadow-sm" 
+         style="max-height: 300px; object-fit: cover;">
+  </div>
+  <h2 class="text-center fw-bold mb-4">Sell Your Car</h2>
+  <p class="text-center mb-4">Fill in the details below to list your car for sale.</p>
+
+  <form method="post" enctype="multipart/form-data" class="border p-4 rounded shadow-sm bg-light">
+    {% csrf_token %}
+
+    <!-- Owner Details -->
+    <h4 class="mb-3">Owner Details</h4>
+    <div class="mb-3">
+      <label for="owner_name" class="form-label">Name of Owner</label>
+      <input type="text" class="form-control" id="owner_name" name="owner_name" placeholder="Enter Owner's Name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="contact_no" class="form-label">Contact No.</label>
+      <input type="tel" class="form-control" id="contact_no" name="contact_no" placeholder="Enter Contact Number" pattern="[0-9]{10}" required>
+      <div class="form-text">Enter 10-digit mobile number</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea class="form-control" id="address" name="address" rows="2" placeholder="Enter Full Address" required></textarea>
+    </div>
+
+    <!-- Car Details -->
+    <h4 class="mt-4 mb-3">Car Details</h4>
+    <div class="mb-3">
+      <label for="car_name" class="form-label">Car Name</label>
+      <input type="text" class="form-control" id="car_name" name="car_name" placeholder="Enter Car Name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="model" class="form-label">Model</label>
+      <input type="text" class="form-control" id="model" name="model" placeholder="Enter Model" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="year" class="form-label">Year</label>
+      <input type="number" class="form-control" id="year" name="year" placeholder="Enter Year" min="1980" max="2025" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price (INR)</label>
+      <input type="number" class="form-control" id="price" name="price" placeholder="Enter Price in INR" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="condition" class="form-label">Condition</label>
+      <select class="form-select" id="condition" name="condition" required>
+        <option value="">Select Condition</option>
+        <option value="Well">Well</option>
+        <option value="Average">Average</option>
+        <option value="Not Good">Not Good</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Upload Recent Image</label>
+      <input class="form-control" type="file" id="image" name="image" accept="image/*" required>
+    </div>
+
+    <!-- Submit -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success px-4">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock body %}
